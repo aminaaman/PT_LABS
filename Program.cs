@@ -4,12 +4,12 @@ namespace Amina
 {
 	class Program
 	{
-		//We check a is prime or not 
+		//We check if a is prime or not 
 		static bool isPrime(int a)
 		{
 
 			int k = 0;
-			for (int i = 1; i <= a; ++i)
+			for (int i = 1; i <= a; ++i)  //find number of divisors
 			{
 				if (a % i == 0)
 				{
@@ -30,7 +30,7 @@ namespace Amina
 				string s = args[i]; // "5"
 				int p = int.Parse(s); // p = 5
 
-				if (isPrime(p) == false)
+				if (isPrime(p) == true)
 				{
 					Console.WriteLine(p);
 				}
