@@ -1,46 +1,73 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.IO; //library for using StreamReader and StreamWriter
 
 namespace Amina
 {
 	class Program
 	{
-		static void Ex1()
-		{ 
-			StreamReader sr = new StreamReader(@"/Users/Adela/Documents/a.txt"); //showing the path
-			string[] arr = sr.ReadLine().Split(); // "1 3 5 7 9 11" -> arr[0] = "1", arr[1] = "3"...
-
-			int min = 320000;   
-			int max = -1;		
-
-			foreach (string i in arr)    //converting array to string 
+		static void emptySpace(int level) //function that displays 2*spaces where you apply it 
+		{
+			for (int i = 0; i < level * 2; i++)
 			{
-				int a = int.Parse(i); //converting string to integer
+				Console.WriteLine(" ");
+			}
+		}
+		static void Ex2(string path, int level) //function that opens directories and files recursively
+		{
+			if (level > 2)
+				return; // outputing only with 2 empty space
+			/*
+			 TRY identifies a block of code for which 
+			 particular exceptions is activated
+			 
+			 CATCH catches an exception
+			 */
+			try
+			{
 
+				// Getting directories
+				DirectoryInfo directory = new DirectoryInfo(path);
+				DirectoryInfo[] directories = directory.GetDirectories();
 
-				//checking the min
-				if (a < min)
+				//Getting files
+				FileInfo[] files = directory.GetFiles();
+				Console.WriteLine("Files:");
+				foreach (FileInfo file in files)
 				{
-					min = a;
+					emptySpace(level); // getting names of files
+					Console.WriteLine(file.Name);
 				}
 
-				//checking the max
-				if (a > max)
-				{
-					max = a;
-				}
+				Console.WriteLine("Directories:");
 
+				foreach (DirectoryInfo dInfo in directories)
+				{
+					//getting the fullname
+					emptySpace(level);
+					Console.WriteLine(dInfo.Name);
+					Ex2(dInfo.FullName, level + 1); //applying func to open directories in directories
+
+				}
+			}
+
+			catch (Exception e)
+			{
 
 			}
-			Console.WriteLine(min);
-			Console.WriteLine(max);
-
-			sr.Close();
 		}
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
-			Ex1();
+			Ex2(@"/users/Adela/documents", 0);
 			Console.ReadKey();
 		}
 	}
 }
+			
+			
+		
+		
+		
