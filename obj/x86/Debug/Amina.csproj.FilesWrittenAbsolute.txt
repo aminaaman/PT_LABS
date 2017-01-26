@@ -1,0 +1,5 @@
+/Users/Adela/Projects/Amina/Amina/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Adela/Projects/Amina/Amina/bin/Debug/Amina.exe.mdb
+/Users/Adela/Projects/Amina/Amina/bin/Debug/Amina.exe
+/Users/Adela/Projects/Amina/Amina/obj/x86/Debug/Amina.exe
+/Users/Adela/Projects/Amina/Amina/obj/x86/Debug/Amina.exe.mdb

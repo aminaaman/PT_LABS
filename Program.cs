@@ -1,40 +1,46 @@
 ﻿using System;
+using System.IO; //library for using StreamReader and StreamWriter
 
 namespace Amina
 {
 	class Program
 	{
-		//We check if a is prime or not 
-		static bool isPrime(int a)
-		{
+		static void Ex1()
+		{ 
+			StreamReader sr = new StreamReader(@"/Users/Adela/Documents/a.txt"); //showing the path
+			string[] arr = sr.ReadLine().Split(); // "1 3 5 7 9 11" -> arr[0] = "1", arr[1] = "3"...
 
-			int k = 0;
-			for (int i = 1; i <= a; ++i)  //find number of divisors
+			int min = 320000;   
+			int max = -1;		
+
+			foreach (string i in arr)    //converting array to string 
 			{
-				if (a % i == 0)
+				int a = int.Parse(i); //converting string to integer
+
+
+				//checking the min
+				if (a < min)
 				{
-					k++;
+					min = a;
 				}
+
+				//checking the max
+				if (a > max)
+				{
+					max = a;
+				}
+
+
 			}
+			Console.WriteLine(min);
+			Console.WriteLine(max);
 
-			if (k == 2) return true;
-
-			return false;
+			sr.Close();
 		}
-
 		static void Main(string[] args)
 		{
-			int n = args.Length;
-			for (int i = 0; i < n; i++)
-			{
-				string s = args[i]; // "5"
-				int p = int.Parse(s); // p = 5
-
-				if (isPrime(p) == true)
-				{
-					Console.WriteLine(p);
-				}
-			}
+			Ex1();
+			Console.ReadKey();
 		}
 	}
 }
