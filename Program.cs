@@ -4,6 +4,7 @@ namespace Amina
 {
 	class Program
 	{
+		//We check a is prime or not 
 		static bool isPrime(int a)
 		{
 
